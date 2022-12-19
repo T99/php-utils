@@ -75,7 +75,7 @@ function humanReadableBytes(
 	$log = log($bytes, $base);
 	
 	// Determine which unit to use.
-	$unit_index = round($log);
+	$unit_index = intval($log);
 	
 	// We can't use a larger unit than the ones we've defined above.
 	$unit_index = min($unit_index, count($unit_prefixes) - 1);
