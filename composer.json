@@ -1,0 +1,52 @@
+{
+	"name": "t99/utils",
+	"description": "Just a collection of useful PHP scripts, functions, and the like that I've bandaged together.",
+	"version": "v0.0.1",
+	"type": "library",
+	"keywords": [
+		"utilities",
+		"array",
+		"array-utilities",
+		"functional"
+	],
+	"homepage": "https://github.com/T99/php-utils",
+	"readme": "readme.md",
+	"license": "GPL-3.0-or-later",
+	"authors": [
+		{
+			"name": "Trevor Sears",
+			"email": "trevor@trevorsears.com",
+			"homepage": "https://trevorsears.com/",
+			"role": "Developer"
+		}
+	],
+	"support": {
+		"issues": "https://github.com/T99/php-utils/issues",
+		"forum": "https://github.com/T99/php-utils/discussions",
+		"wiki": "https://github.com/T99/php-utils/wiki",
+		"source": "https://github.com/T99/php-utils",
+		"docs": "https://github.com/T99/php-utils/blob/master/readme.md"
+	},
+	"funding": [
+		{
+			"type": "buymeacoffee",
+			"url": "https://www.buymeacoffee.com/trevorsears"
+		}
+	],
+	"require-dev": {
+		"phpunit/phpunit": "9.6.7"
+	},
+	"autoload": {
+		"psr-4": {
+			"T99\\Utils\\": "src/"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"T99\\Utils\\Tests\\": "tests/"
+		}
+	},
+	"config": {
+		"classmap-authoritative": true
+	}
+}
