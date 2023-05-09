@@ -23,66 +23,8 @@
 
 namespace T99\Util\Formatting;
 
-/**
- * Returns true if the input array appears to be an associative array, otherwise
- * returning false.
- * 
- * @param array $input The array being tested.
- * @return bool true if the input array appears to be an associative array,
- * otherwise returning false.
- */
-function isArrayAssociative(array $input): bool {
-	
-	return (
-		$input !== [] &&
-		array_keys($input) !== range(0, count($input) - 1)
-	);
-	
-}
-
-/**
- * Returns an array of strings, representing the values of the input array after
- * each being converted to a string.
- * 
- * @param array $input The input array to map to a string array.
- * @param string $value_when_null The string value to use for null values.
- * @return string[]
- */
-function toStringArray(array $input, string $value_when_null = ""): array {
-	
-	return array_map(
-		callback: fn($value): string => match (gettype($value)) {
-			"boolean" => $value ? "true" : "false",
-			"integer", "double" => strval($value),
-			"string" => $value,
-			"array" => arrayToString($value, $value_when_null),
-			"NULL" => $value_when_null,
-			default => "<" . gettype($value) . ">",
-		},
-		array: $input,
-	);
-	
-}
-
-/**
- * Returns a string that represents the contents of the provided array with a
- * comma separated list of values.
- * 
- * @param array $input The input array for which to generate a string.
- * @param string $value_when_null The string value to use for null values.
- * @return string A string that represents the contents of the provided array
- * with a comma separated list of values.
- */
-function arrayToString(array $input, string $value_when_null = "null"): string {
-	
-	$array_contents_string = join(
-		separator: ", ",
-		array: toStringArray($input, $value_when_null),
-	);
-	
-	return "[$array_contents_string]";
-	
-}
+use function T99\Util\Arrays\array_stringify;
+use function T99\Util\Arrays\is_assoc;
 
 /**
  * Returns a string containing an ASCII table.
@@ -102,10 +44,10 @@ function toASCIITable(array $data, array $headers = null): string {
 	$result = "";
 	
 	if (count($data) <= 0) return $result;
-	else if (isArrayAssociative($data)) {
+	else if (is_assoc($data)) {
 		
 		$data_keys = array_keys($data);
-		$data_values = toStringArray(array_values($data));
+		$data_values = array_stringify(array_values($data), "");
 		
 		$max_key_length = max(array_map(
 			callback: fn($key): int => strlen($key),
@@ -148,7 +90,7 @@ function toASCIITable(array $data, array $headers = null): string {
 		array: $data,
 	);
 	
-	if (!is_null($headers) && isArrayAssociative($headers)) {
+	if (!is_null($headers) && is_assoc($headers)) {
 		
 		$header_columns = array_keys($headers);
 		$header_titles = array_values($headers);
@@ -161,11 +103,11 @@ function toASCIITable(array $data, array $headers = null): string {
 	}
 	
 	$data = array_map(
-		callback: fn($row): array => toStringArray(array_filter(
+		callback: fn($row): array => array_stringify(array_filter(
 			array: $row,
 			callback: fn($key): bool => in_array($key, $header_columns),
 			mode: ARRAY_FILTER_USE_KEY,
-		)),
+		), ""),
 		array: $data,
 	);
 	
@@ -216,7 +158,8 @@ function toASCIITable(array $data, array $headers = null): string {
 		$result .= join("", [
 			"| ",
 			join(" | ", array_map(
-				fn($column, $width): string => str_pad($row[$column] ?? "", $width),
+				fn($column, $width): string =>
+					str_pad($row[$column] ?? "", $width),
 				$header_columns, $column_widths,
 			)),
 			" |\n",
