@@ -23,6 +23,8 @@
 
 namespace T99\Util\Arrays;
 
+use Countable;
+
 /**
  * Finds the largest {@link Countable} (or array) in the provided array.
  * 
