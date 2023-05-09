@@ -21,6 +21,8 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+namespace T99\Util\Formatting;
+
 /**
  * Formats an integer value as an amount of bytes, kilobytes, megabytes, etc (or
  * bytes, kibibytes, mebibytes, etc. if the $use_base_2 argument is set to true)

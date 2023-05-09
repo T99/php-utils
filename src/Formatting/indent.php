@@ -21,6 +21,8 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+namespace T99\Util\Formatting;
+
 /**
  * Indents each line of the provided string (each line being separated by the
  * given line separator, or by the default line separator, '\n') with the

@@ -21,6 +21,8 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+namespace T99\Util\Arrays;
+
 /**
  * Given a 2-dimensional array, this function returns a mapped 2-dimensional
  * array wherein the rows of the input array have been 'grouped'.

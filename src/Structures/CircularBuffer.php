@@ -21,6 +21,12 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+namespace T99\Util\Structures;
+
+use Countable;
+use Exception;
+use SplFixedArray;
+
 /**
  * A fixed-size buffer/array that behaves as if it were connected end-to-end.
  * 

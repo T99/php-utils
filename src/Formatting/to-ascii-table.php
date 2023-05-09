@@ -21,6 +21,8 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+namespace T99\Util\Formatting;
+
 /**
  * Returns true if the input array appears to be an associative array, otherwise
  * returning false.
