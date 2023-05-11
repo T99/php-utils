@@ -65,7 +65,7 @@ function groupArray(array $input, array $group_by, array $group_into): array {
 		
 		if ($item_group !== $current_group) {
 			
-			if (!is_null($current_item)) {
+			if ($current_item !== null) {
 				
 				if ($is_item_object) $results[] = (object) $current_item;
 				else $results[] = $current_item;
@@ -91,7 +91,7 @@ function groupArray(array $input, array $group_by, array $group_into): array {
 		
 	}
 	
-	if (!is_null($current_item)) {
+	if ($current_item !== null) {
 		
 		if ($is_item_object) $results[] = (object) $current_item;
 		else $results[] = $current_item;

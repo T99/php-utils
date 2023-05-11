@@ -90,7 +90,7 @@ function toASCIITable(array $data, array $headers = null): string {
 		array: $data,
 	);
 	
-	if (!is_null($headers) && is_assoc($headers)) {
+	if ($headers !== null && is_assoc($headers)) {
 		
 		$header_columns = array_keys($headers);
 		$header_titles = array_values($headers);
