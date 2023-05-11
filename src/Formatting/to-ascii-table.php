@@ -39,7 +39,7 @@ use function T99\Util\Arrays\is_assoc;
  * the header for the column being described. 
  * @return string A string containing an ASCII table.
  */
-function toASCIITable(array $data, array $headers = null): string {
+function to_ascii_table(array $data, array $headers = null): string {
 	
 	$result = "";
 	
