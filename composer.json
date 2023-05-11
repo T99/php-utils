@@ -39,7 +39,29 @@
 	"autoload": {
 		"psr-4": {
 			"T99\\Utils\\": "src/"
-		}
+		},
+		"files": [
+			"src/Arrays/array_all.php",
+			"src/Arrays/array_any.php",
+			"src/Arrays/array_entries.php",
+			"src/Arrays/array_find.php",
+			"src/Arrays/array_head.php",
+			"src/Arrays/array_largest_countable.php",
+			"src/Arrays/array_map_assoc.php",
+			"src/Arrays/array_none.php",
+			"src/Arrays/array_stringify.php",
+			"src/Arrays/array_tail.php",
+			"src/Arrays/array_to_string.php",
+			"src/Arrays/group-array.php",
+			"src/Arrays/is_assoc.php",
+			"src/Arrays/surround.php",
+			"src/Formatting/casing-conversion.php",
+			"src/Formatting/human-readable-bytes.php",
+			"src/Formatting/indent.php",
+			"src/Formatting/to-ascii-table.php",
+			"src/Formatting/to_html_table.php",
+			"src/Formatting/var_dump_to_string.php"
+		]
 	},
 	"autoload-dev": {
 		"psr-4": {
