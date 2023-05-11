@@ -3,3 +3,6 @@
 
 # Ignore Composer dependencies.
 /vendor/
+
+# Ignore PHPUnit results cache.
+.phpunit.result.cache
