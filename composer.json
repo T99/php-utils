@@ -45,6 +45,7 @@
 			"src/Arrays/array_any.php",
 			"src/Arrays/array_entries.php",
 			"src/Arrays/array_find.php",
+			"src/Arrays/array_flatten.php",
 			"src/Arrays/array_head.php",
 			"src/Arrays/array_largest_countable.php",
 			"src/Arrays/array_map_assoc.php",
