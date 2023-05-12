@@ -21,8 +21,10 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-use function T99\Util\Arrays\array_entries;
-use function T99\Util\Arrays\array_largest_countable;
+namespace T99\Util\Arrays;
+
+use Exception;
+use InvalidArgumentException;
 use function T99\Util\Formatting\var_dump_to_string;
 
 /**
@@ -51,6 +53,21 @@ function array_map_assoc(
 	array $array,
 	array ...$arrays,
 ): array {
+	
+	// If no callback is provided, use a default callback that zips entries 
+	// together into a single array.
+	$callback ??= fn(...$entries): array => $entries;
+	
+	// check if any value in arrays is not an array
+	if (array_any($arrays, fn(array $array): bool => !is_array($array))) {
+		
+		throw new InvalidArgumentException(
+			"array_map_assoc failed: one or more arrays in arrays argument " .
+			"was not an array. Actual value: " . var_dump_to_string($arrays)
+		);
+		
+	}
+	
 	
 	$rows = [$array, ...$arrays];
 	$rows_entries = array_map("array_entries", $rows);

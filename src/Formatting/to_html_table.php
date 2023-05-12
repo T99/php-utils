@@ -22,37 +22,3 @@
  */
 
 namespace T99\Util\Formatting;
-
-function to_html_table(array $data, array $headers = null): string {
-	
-	// If the data is empty, return an empty string.
-	if ($data === []) return "";
-	
-	// If the headers are not provided, use the keys of the first row of data.
-	if ($headers === null) $headers = array_keys($data[0]);
-	
-	// Create the table header.
-	$table_header = "<thead><tr>";
-	
-	foreach ($headers as $header) $table_header .= "<th>$header</th>";
-	
-	$table_header .= "</tr></thead>";
-	
-	// Create the table body.
-	$table_body = "<tbody>";
-	
-	foreach ($data as $row) {
-		
-		$table_body .= "<tr>";
-		
-		foreach ($row as $value) $table_body .= "<td>$value</td>";
-		
-		$table_body .= "</tr>";
-	}
-	
-	$table_body .= "</tbody>";
-	
-	// Return the table.
-	return "<table>$table_header$table_body</table>";
-	
-}

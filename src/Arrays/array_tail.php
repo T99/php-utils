@@ -22,31 +22,3 @@
  */
 
 namespace T99\Util\Arrays;
-
-/**
- * Returns the last $count elements of the given array, or all but the first
- * $count elements if $count is negative.
- * 
- * @param array $array The array to get trailing elements from.
- * @param int $count The number of trailing elements to retrieve, or the number
- * of leading elements to exclude if negative.
- * @param bool $preserve_keys By default, the returned array will have been
- * re-indexed. If this parameter is set to true, the array keys will be
- * preserved.
- * @return array The last $count elements of the given array, or all but the
- * first $count elements if $count is negative. 
- */
-function array_tail(
-	array $array,
-	int $count = 1,
-	bool $preserve_keys = false,
-): array {
-	
-	return array_slice(
-		array: $array,
-		offset: $count <= 0 ? abs($count) : -$count,
-		length: null,
-		preserve_keys: $preserve_keys,
-	);
-	
-}
